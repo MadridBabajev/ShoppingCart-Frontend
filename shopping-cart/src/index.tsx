@@ -4,13 +4,13 @@ import './styles/site.css';
 import Root from './routes/Root';
 import reportWebVitals from './reportWebVitals';
 import {createBrowserRouter, RouterProvider} from "react-router-dom";
-import ErrorPage from "./routes/general/ErrorPage";
-import Home from "./routes/general/Home";
+import ErrorPage from "./routes/guest/ErrorPage";
+import Home from "./routes/guest/Home";
 import {Navigations} from "./types/strings/notifications/Navigations";
-import Register from "./routes/general/Register";
-import Login from "./routes/general/Login";
-import Catalog from "./routes/general/Catalog";
-import ItemDetails from "./routes/general/ItemDetails";
+import Register from "./routes/guest/Register";
+import Login from "./routes/guest/Login";
+import Catalog from "./routes/guest/Catalog";
+import ItemDetails from "./routes/guest/ItemDetails";
 import ShoppingCart from "./routes/authorized/ShoppingCart";
 
 const router = createBrowserRouter([

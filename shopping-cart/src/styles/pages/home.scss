@@ -4,6 +4,7 @@
   padding: 2rem;
   color: base.$color-white;
   text-align: center;
+  @include base.gradient-background(base.$color-white, base.$color-light-blueberry);
 
   .hero {
     margin-bottom: 3rem;
@@ -12,6 +13,7 @@
       font-size: 3rem;
       margin-bottom: 1rem;
       color: base.$color-accent;
+      font-weight: 700;
     }
 
     p {
@@ -56,13 +58,14 @@
     h2 {
       font-size: 2rem;
       margin-bottom: 1rem;
+      font-weight: 700;
     }
 
     p {
       font-size: 1.25rem;
       margin-bottom: 2rem;
-      color: base.$color-accent;
-      font-weight: 500;
+      color: base.$color-black;
+      font-weight: 600;
     }
 
     .primary-button {

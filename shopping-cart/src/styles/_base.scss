@@ -78,6 +78,10 @@ button {
   }
 }
 
+@mixin gradient-background($color-top, $color-bottom) {
+  background: linear-gradient(to bottom, $color-top, $color-bottom);
+}
+
 // Example usage:
 // .primary-button {
 //   @include button-style($color-primary, $color-white);

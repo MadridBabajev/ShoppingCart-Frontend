@@ -5,21 +5,24 @@ import "../../../styles/pages/login-register.scss"
 const LoginView = (props: ILoginProps) => {
 
     return (
-        <form className="form-container">
-            <h2>Login</h2>
+        <div className="content-wrapper">
+            <form className="form-container">
+                <h2>Login</h2>
 
-            <ul style={{'display': props.validationErrors.length === 0 ? 'none' : '', 'paddingLeft': '0'}}>
-                <li className="error-message">
-                    * {props.validationErrors.length > 0 ? props.validationErrors[0] : ''}
-                </li>
-            </ul>
+                <ul style={{'display': props.validationErrors.length === 0 ? 'none' : '', 'paddingLeft': '0'}}>
+                    <li className="error-message">
+                        * {props.validationErrors.length > 0 ? props.validationErrors[0] : ''}
+                    </li>
+                </ul>
 
-            <LoginInputFields {...props} />
+                <LoginInputFields {...props} />
 
-            <button
-                onClick={(e) => props.onSubmit(e)}
-                id="loginSubmit" className="w-100 btn btn-lg btn-primary">Login</button>
-        </form>
+                <button
+                    onClick={(e) => props.onSubmit(e)}
+                    id="loginSubmit" className="w-100 btn btn-lg btn-primary">Login
+                </button>
+            </form>
+        </div>
     );
 }
 

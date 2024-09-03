@@ -6,7 +6,7 @@ import reportWebVitals from './reportWebVitals';
 import {createBrowserRouter, RouterProvider} from "react-router-dom";
 import ErrorPage from "./routes/general/ErrorPage";
 import Home from "./routes/general/Home";
-import {Navigations} from "./types/strings/Navigations";
+import {Navigations} from "./types/strings/notifications/Navigations";
 import Register from "./routes/general/Register";
 import Login from "./routes/general/Login";
 import Catalog from "./routes/general/Catalog";

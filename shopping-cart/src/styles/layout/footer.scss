@@ -1,0 +1,30 @@
+@use '../base';
+
+// Footer
+footer {
+  background-color: base.$color-primary;
+  color: base.$color-white;
+  padding: 2rem 1rem;
+
+  .footer-columns {
+    display: flex;
+    justify-content: space-around;
+    margin-bottom: 1rem;
+  }
+
+  .footer-column a {
+    color: base.$color-white;
+    display: block;
+    margin-bottom: 0.5rem;
+
+    &:hover {
+      color: base.$color-highlight;
+    }
+  }
+
+  .footer-copyright {
+    text-align: center;
+    font-size: 0.875rem;
+    color: base.$color-white;
+  }
+}

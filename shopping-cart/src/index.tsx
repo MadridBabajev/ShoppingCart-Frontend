@@ -1,6 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
-import './styles/site.css';
+import './styles/_base.scss';
 import Root from './routes/Root';
 import reportWebVitals from './reportWebVitals';
 import {createBrowserRouter, RouterProvider} from "react-router-dom";
@@ -12,6 +12,7 @@ import Login from "./routes/guest/Login";
 import Catalog from "./routes/guest/Catalog";
 import ItemDetails from "./routes/guest/ItemDetails";
 import ShoppingCart from "./routes/authorized/ShoppingCart";
+import 'bootstrap/dist/css/bootstrap.min.css';
 
 const router = createBrowserRouter([
     {

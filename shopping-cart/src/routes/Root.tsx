@@ -1,5 +1,4 @@
 import React, {useEffect, useState} from 'react';
-import './types/App.css';
 import INotification from "../types/props/layout/INotification";
 import IJWTResponse from "../types/dto/identity/IJWTResponse";
 import {notificationManager} from "../helpers/NotificationManager";
@@ -34,11 +33,9 @@ const Root = () => {
     return (
         <JwtContext.Provider value={{ jwtResponse, setJwtResponse }}>
             <Header />
-            <div className="container">
-                <main style={{ marginTop: "160px" }} role="main" className="pb-3">
-                    <Outlet />
-                </main>
-            </div>
+            <main role="main">
+                <Outlet />
+            </main>
             <NotificationPopup notification={notification} setNotification={setNotification} />
             <Footer />
         </JwtContext.Provider>

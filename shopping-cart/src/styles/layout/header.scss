@@ -1,0 +1,50 @@
+@use '../base';
+
+// Header
+.navBar {
+  @include base.flex-around;
+  background-color: base.$color-white;
+  padding: 0 1rem;
+  border-bottom: 2px solid base.$color-gray;
+  height: 10vh;
+
+  .header-logo {
+    height: 50px;
+  }
+
+  .right-nav-items {
+    display: flex;
+    gap: 0.5rem;
+    text-decoration: none;
+    height: inherit;
+
+    .right-nav-item {
+      color: base.$color-secondary;
+      font-weight: bold;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      height: inherit;
+      padding: 10px;
+      transition: background-color 0.2s;
+
+      &:hover {
+        color: base.$color-dark;
+        background-color: base.$color-gray;
+      }
+    }
+
+    .header-login-logout-btn {
+      background-color: base.$color-secondary;
+      color: base.$color-white;
+      border: none;
+      padding: 0.5rem 1rem;
+      border-radius: 0.25rem;
+
+      &:hover {
+        color: base.$color-white;
+        background-color: base.$color-dark;
+      }
+    }
+  }
+}

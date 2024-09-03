@@ -64,7 +64,7 @@ const HeaderLinksView = ({isLoggedIn, logout}: IHeaderLinksViewProps) => {
             { isLoggedIn && <Link to={Navigations.SHOP_CART} className="right-nav-item">My Shopping cart</Link>}
             { isLoggedIn && <button onClick={logout} className="right-nav-item header-login-logout-btn">Logout</button>}
             { !isLoggedIn && <Link to={Navigations.REGISTER} className="right-nav-item">Register</Link>}
-            { !isLoggedIn && <Link to={Navigations.LOGIN} className="right-nav-item header-login-logout-btn">Log in</Link>}
+            { !isLoggedIn && <Link to={Navigations.LOGIN} className="right-nav-item btn-primary header-login-logout-btn">Log in</Link>}
         </div>
     )
 };

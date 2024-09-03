@@ -4,8 +4,8 @@ import {AxiosError} from "axios";
 import IError from "../../../types/errors/IError";
 import IJWTResponse from "../../../types/dto/identity/IJWTResponse";
 import {IdentityServiceResponse} from "../../../types/dto/identity/IdentityServiceResponse";
-import {IRegisterData} from "../../../types/dto/identity/IRegisterData";
-import {ILoginData} from "../../../types/dto/identity/ILoginData";
+import IRegisterData from "../../../types/dto/identity/IRegisterData";
+import ILoginData from "../../../types/dto/identity/ILoginData";
 import {ILogout} from "../../../types/dto/identity/ILogout";
 
 

@@ -1,6 +1,7 @@
 
-export interface ILoginData {
+interface ILoginData {
     email: string,
     password: string,
-    isTutor: boolean
 }
+
+export default ILoginData;

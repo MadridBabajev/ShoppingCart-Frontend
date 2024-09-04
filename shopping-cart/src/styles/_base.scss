@@ -1,0 +1,88 @@
+// Main colors
+$color-primary: #5776A5; // Dark-blueberry
+$color-secondary: #1427F5; // Blue
+$color-accent: #146EF5; // Medium-blue
+$color-light: #14F5ED; // Cyan
+$color-dark: #4A14F5; // Purple
+$color-highlight: #14B5F5; // Light-blue
+
+// Additional Colors
+$color-white: #ffffff;
+$color-black: #000000;
+$color-gray: #f8f9fa;
+$color-darker-gray: #c2c2c2;
+$color-light-red: #ffe6e6;
+$color-light-blueberry: #506fd4;
+
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap');
+
+// Global Styles
+body {
+  font-family: 'Roboto', sans-serif;
+  background-color: $color-gray;
+  color: $color-black;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+a {
+  color: $color-primary;
+  text-decoration: none !important;
+
+  &:hover {
+    color: $color-highlight;
+  }
+}
+
+h1, h2, h3, h4, h5, h6 {
+  color: $color-dark;
+}
+
+button {
+  background-color: $color-primary;
+  color: $color-white;
+  border: none;
+  padding: 0.5rem 1rem;
+  border-radius: 0.25rem;
+  cursor: pointer;
+
+  &:hover {
+    background-color: $color-highlight;
+  }
+}
+
+// Mixins
+@mixin flex-center {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+@mixin flex-around {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+@mixin button-style($bg-color, $text-color) {
+  background-color: $bg-color;
+  color: $text-color;
+  border: none;
+  padding: 0.5rem 1rem;
+  border-radius: 0.25rem;
+  cursor: pointer;
+
+  &:hover {
+    opacity: 0.9;
+  }
+}
+
+@mixin gradient-background($color-top, $color-bottom) {
+  background: linear-gradient(to bottom, $color-top, $color-bottom);
+}
+
+// Example usage:
+// .primary-button {
+//   @include button-style($color-primary, $color-white);
+// }

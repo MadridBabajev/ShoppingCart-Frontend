@@ -47,8 +47,11 @@ const HeaderLinks = ({ isLoggedIn }: { isLoggedIn: boolean }) => {
         if (jwtResponse) {
             const success = await identityService.logout({ refreshToken: jwtResponse.refreshToken });
             if (success) {
+                // Clear local storage first
+                localStorage.clear();
+
+                // Now update the state
                 if (setJwtResponse) setJwtResponse(null);
-                localStorage.clear()
             }
             navigate("/");
         }

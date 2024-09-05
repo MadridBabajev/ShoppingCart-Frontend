@@ -1,13 +1,13 @@
 import {BaseEntityService} from "../../base-services/BaseEntityService";
-import HostURLs from "../../../types/strings/urls/HostURLs";
+import HostURLs from "../../../types/strings/HostURLs";
 import IShopItemDetails from "../../../types/dto/domain/shop-items/IShopItemDetails";
 import IShopItemListElement from "../../../types/dto/domain/shop-items/IShopItemListElement";
-import Queries from "../../../types/strings/queries/Queries";
 import IShoppingCartItemAction from "../../../types/dto/domain/shop-items/IShoppingCartItemAction";
+import QueryParams from "../../../types/strings/Queries";
 
 interface IShopItemService {
     getCartItems(): Promise<IShopItemListElement[] | undefined>,
-    getCartItemDetails(itemId: string): Promise<IShopItemDetails | undefined>,
+    getShopItemDetails(itemId: string): Promise<IShopItemDetails | undefined>,
     addRemoveCartItem(cartAction: IShoppingCartItemAction): Promise<void>,
     clearShoppingCart(): Promise<void>;
 }
@@ -26,9 +26,11 @@ export class ShopItemService extends BaseEntityService<IShopItemDetails> impleme
         }
     }
 
-    async getCartItemDetails(itemId: string): Promise<IShopItemDetails | undefined> {
+    async getShopItemDetails(itemId: string): Promise<IShopItemDetails | undefined> {
         try {
-            return await this.axios.get(HostURLs.GET_ALL_CART_ITEMS + `${Queries.SHOP_ITEM}${itemId}`);
+            const apiRequest = `${HostURLs.GET_ITEM_DETAILS}${QueryParams.SHOP_ITEM}${itemId}`
+            const response = await this.axios.get(apiRequest)
+            return response.data;
         } catch (error) {
             console.error(`Failed to leave a review: ${error}`);
         }

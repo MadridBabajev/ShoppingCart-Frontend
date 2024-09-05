@@ -1,4 +1,4 @@
-import LocalStorage from "../../types/strings/local-storage/LocalStorage";
+import LocalStorage from "../../types/strings/LocalStorage";
 import {notificationManager} from "../NotificationManager";
 import {useContext, useState} from "react";
 import IJWTResponse from "../../types/dto/identity/IJWTResponse";

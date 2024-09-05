@@ -1,7 +1,7 @@
 import {useCallback, useContext, useEffect, useState} from "react";
 import JwtContext from "../../types/context/jwt-context/JwtContext";
 import {Link, useNavigate} from "react-router-dom";
-import LocalStorage from "../../types/strings/local-storage/LocalStorage";
+import LocalStorage from "../../types/strings/LocalStorage";
 import {Navigations} from "../../types/navigations/Navigations";
 import logo from "../../assets/logo.png";
 import {IdentityService} from "../../services/app-services/Identity/IdentityService";

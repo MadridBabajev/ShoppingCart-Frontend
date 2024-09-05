@@ -1,10 +1,10 @@
 import CatalogView from "./route-views/CatalogView";
 import React, {useCallback, useEffect, useMemo, useState} from "react";
 import Loader from "../../components/layout/Loader";
-import Patterns from "../../types/strings/patterns/Patterns";
+import Patterns from "../../types/strings/Patterns";
 import IShopItemListElement from "../../types/dto/domain/shop-items/IShopItemListElement";
 import {ShopItemService} from "../../services/app-services/entity/ShopItemService";
-import HostURLs from "../../types/strings/urls/HostURLs";
+import HostURLs from "../../types/strings/HostURLs";
 import ECartItemActions from "../../types/dto/domain/shop-items/ECartItemActions";
 import {notificationManager} from "../../helpers/NotificationManager";
 import {NotificationMessages} from "../../types/strings/notifications/NotificationMessages";
@@ -26,7 +26,7 @@ const Catalog = () => {
             console.log(items);
             setLoading(false);
         })
-    }, [])
+    }, [service])
 
     useEffect(() => {
         fetchItems().catch();

@@ -1,7 +1,13 @@
-import ICatalogViewProps from "../../../types/props/shop-items/ICatalogViewProps";
 import React from "react";
 import SharedItemCard from "../../../components/cards/SharedItemCard";
+import IShopItemListElement from "../../../types/dto/domain/shop-items/IShopItemListElement";
 
+interface ICatalogViewProps {
+    items: IShopItemListElement[],
+    decodeImageSrc: (item: IShopItemListElement) => string,
+    handleItemAddRemove: (item: IShopItemListElement) => void,
+    isAuthorized: boolean,
+}
 const CatalogView = (props: ICatalogViewProps) => {
     return (
         <div className="catalog-container">

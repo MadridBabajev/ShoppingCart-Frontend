@@ -9,6 +9,8 @@
   @include base.gradient-background(base.$color-white, base.$color-light-blueberry);
 }
 
+
+// Register form styles
 .form-container {
   display: flex;
   flex-direction: column;

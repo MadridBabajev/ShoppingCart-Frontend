@@ -1,12 +1,12 @@
 interface IShopItemDetails {
     id: string;
+    description?: string | null;
+    itemPicture?: Uint8Array | null;
     name: string;
     price: number;
-    rating: number;
-    itemPicture?: Uint8Array | null;
     quantityTaken?: number | null;
+    rating: number;
     stockAmount?: number | null;
-    description?: string | null;
 }
 
 export default IShopItemDetails;

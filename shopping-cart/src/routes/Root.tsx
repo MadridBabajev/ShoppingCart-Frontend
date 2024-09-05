@@ -8,7 +8,7 @@ import Footer from "../components/layout/Footer";
 import JwtContext from "../types/context/jwt-context/JwtContext";
 import NotificationPopup from "../components/layout/NotificationPopup";
 import {JwtRefreshEvent} from "../services/base-services/BaseService";
-import RefreshEvents from "../types/strings/refresh-events/RefreshEvents";
+import RefreshEvents from "../types/strings/RefreshEvents";
 
 const Root = () => {
     const [jwtResponse, setJwtResponse] = useState<IJWTResponse | null>(null);

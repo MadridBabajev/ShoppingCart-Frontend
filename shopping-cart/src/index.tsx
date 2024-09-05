@@ -41,7 +41,7 @@ const router = createBrowserRouter([
                 element: <ShoppingCart />,
             },
             {
-                path: Navigations.ITEM_DETAILS,
+                path: `${Navigations.ITEM_DETAILS}/:itemId`,
                 element: <ItemDetails />
             },
         ]

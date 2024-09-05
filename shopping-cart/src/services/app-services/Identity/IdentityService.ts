@@ -1,5 +1,5 @@
 import { BaseService } from '../../base-services/BaseService';
-import HostURLs from '../../../types/strings/urls/HostURLs';
+import HostURLs from '../../../types/strings/HostURLs';
 import { AxiosError } from 'axios';
 import IError from '../../../types/errors/IError';
 import IJWTResponse from '../../../types/dto/identity/IJWTResponse';
@@ -7,7 +7,7 @@ import { IdentityServiceResponse } from '../../../types/dto/identity/IdentitySer
 import IRegisterData from '../../../types/dto/identity/IRegisterData';
 import ILoginData from '../../../types/dto/identity/ILoginData';
 import { ILogout } from '../../../types/dto/identity/ILogout';
-import LocalStorage from "../../../types/strings/local-storage/LocalStorage";
+import LocalStorage from "../../../types/strings/LocalStorage";
 
 export class IdentityService extends BaseService {
     constructor() {

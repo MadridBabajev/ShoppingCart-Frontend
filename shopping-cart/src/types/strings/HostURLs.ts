@@ -13,7 +13,6 @@ enum HostURLs {
 
     // ShopItems
     GET_ALL_CART_ITEMS = "GetAllCartItems",
-    GET_CART_ITEM_DETAILS = "GetShoppingCartItemDetails",
     ADD_REMOVE_ITEM = "AddRemoveCartItem",
     CLEAR_CART = "ClearShoppingCart",
     GET_ALL_ITEMS = "GetAllShopItems",

@@ -1,8 +1,8 @@
 import Axios, { AxiosInstance } from 'axios';
 import EventEmitter from 'events';
-import LocalStorage from '../../types/strings/local-storage/LocalStorage';
-import HostURLs from '../../types/strings/urls/HostURLs';
-import RefreshEvents from "../../types/strings/refresh-events/RefreshEvents";
+import LocalStorage from '../../types/strings/LocalStorage';
+import HostURLs from '../../types/strings/HostURLs';
+import RefreshEvents from "../../types/strings/RefreshEvents";
 
 export abstract class BaseService {
     private static hostBaseURL = HostURLs.API_BASE_URL;  // Base URL for API

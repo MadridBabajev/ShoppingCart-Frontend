@@ -1,7 +1,10 @@
 import {FaMinus, FaPlus} from "react-icons/fa";
 import IShopItemListElement from "../../types/dto/domain/shop-items/IShopItemListElement";
-import Patterns from "../../types/strings/patterns/Patterns";
+import Patterns from "../../types/strings/Patterns";
 import ECartItemActions from "../../types/dto/domain/shop-items/ECartItemActions";
+import {useNavigate} from "react-router-dom";
+import {Navigations} from "../../types/navigations/Navigations";
+import React from "react";
 
 interface SharedItemCardProps {
     item: IShopItemListElement;
@@ -18,12 +21,16 @@ const SharedItemCard = ({
                         }: SharedItemCardProps) => {
     const isInCart = item.quantityTaken && item.quantityTaken > 0;
     const isMaxQuantity = item.quantityTaken === item.stockAmount;
+    const navigate = useNavigate()
+    const itemDetailsLink = `${Navigations.ITEM_DETAILS}/${item.id}`
 
-    const handlePlusClick = () => {
+    const handlePlusClick = (e: React.MouseEvent) => {
+        e.stopPropagation();
         if (handleItemUpdate) handleItemUpdate(item, ECartItemActions.INCREMENT);
     };
 
-    const handleMinusClick = () => {
+    const handleMinusClick = (e: React.MouseEvent) => {
+        e.stopPropagation();
         if (!isCartView && handleItemUpdate) {
             handleItemUpdate(item);
         } else if (handleItemUpdate) {
@@ -32,7 +39,7 @@ const SharedItemCard = ({
     };
 
     return (
-        <div className="item-card">
+        <div onClick={() => navigate(itemDetailsLink)} className="item-card">
             <div className="item-content">
                 <img
                     className="item-image"

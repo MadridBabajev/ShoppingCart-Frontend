@@ -135,19 +135,15 @@
   }
 
   .item-action-btn {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    height: 50px;
-    width: 50px;
+    @include base.btn-icon-align;
     color: base.$color-white;
-    padding: 0.5rem;
     font-size: 1.2rem;
     border: none;
     border-radius: 8px;
     cursor: pointer;
     transition: background-color 0.3s ease;
     flex-shrink: 0;
+    z-index: 100;
 
     svg {
       fill: base.$color-white;

@@ -13,7 +13,8 @@ interface SharedItemCardProps {
 const SharedItemCard = ({
                             item,
                             isCartView,
-                            handleItemUpdate
+                            handleItemUpdate,
+                            isAuthorized
                         }: SharedItemCardProps) => {
     const isInCart = item.quantityTaken && item.quantityTaken > 0;
     const isMaxQuantity = item.quantityTaken === item.stockAmount;
@@ -49,7 +50,7 @@ const SharedItemCard = ({
             {isCartView ? (
                 <div className="item-counter">
                     <button className="counter-btn" onClick={handleMinusClick}>
-                        <FaMinus />
+                        <FaMinus/>
                     </button>
                     <span className="quantity">{item.quantityTaken}</span>
                     <button
@@ -57,17 +58,16 @@ const SharedItemCard = ({
                         onClick={handlePlusClick}
                         disabled={isMaxQuantity}
                     >
-                        <FaPlus />
+                        <FaPlus/>
                     </button>
                 </div>
-            ) : (
-                !isInCart ? (
+            ) : (isAuthorized && !isInCart ? (
                     <button className="item-action-btn item-action-btn-add" onClick={handlePlusClick}>
-                        <FaPlus />
+                        <FaPlus/>
                     </button>
-                ) : (
+                ) : (isAuthorized &&
                     <button className="item-action-btn item-action-btn-remove" onClick={handleMinusClick}>
-                        <FaMinus />
+                        <FaMinus/>
                     </button>
                 )
             )}

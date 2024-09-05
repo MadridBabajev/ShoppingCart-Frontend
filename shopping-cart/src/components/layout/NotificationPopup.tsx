@@ -1,7 +1,7 @@
 import {useEffect, useRef} from "react";
 import NotificationColors from "../../types/strings/notifications/NotificationColors";
 import INotificationPopUpProps from "../../types/props/layout/INotificationPopUpProps";
-
+import "../../styles/layout/notification.scss"
 const NotificationPopup = ({ notification, setNotification }: INotificationPopUpProps) => {
     const timeoutId = useRef<NodeJS.Timeout | null>(null);
 

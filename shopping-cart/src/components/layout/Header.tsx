@@ -7,6 +7,8 @@ import logo from "../../assets/logo.png";
 import {IdentityService} from "../../services/app-services/Identity/IdentityService";
 import IHeaderLinksViewProps from "../../types/props/layout/IHeaderProps";
 import '../../styles/layout/header.scss';
+import {notificationManager} from "../../helpers/NotificationManager";
+import {NotificationMessages} from "../../types/strings/notifications/NotificationMessages";
 
 const Header = () => {
     const [isLoggedIn, setIsLoggedIn] = useState<boolean>(false);
@@ -53,6 +55,7 @@ const HeaderLinks = ({ isLoggedIn }: { isLoggedIn: boolean }) => {
                 // Now update the state
                 if (setJwtResponse) setJwtResponse(null);
             }
+            notificationManager.showErrorNotification(NotificationMessages.USER_LOG_OUT);
             navigate("/");
         }
     }

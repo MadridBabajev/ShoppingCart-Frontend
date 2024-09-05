@@ -7,6 +7,17 @@
   //gap: 1.5rem;
   padding: 2rem;
   min-height: 70vh;
+
+  .empty-cart {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 50vh;
+    color: base.$color-darker-gray;
+    font-size: 1.4rem;
+    font-weight: bold;
+    text-align: center;
+  }
 }
 
 .item-card {
@@ -83,6 +94,8 @@
     flex-shrink: 0;
 
     .counter-btn {
+      display: flex;
+      align-items: center;
       background-color: base.$color-light-blueberry;
       color: base.$color-white;
       border: none;
@@ -93,7 +106,7 @@
       transition: background-color 0.3s ease;
 
       &:hover {
-        background-color: base.$color-highlight;
+        background-color: base.$color-accent;
       }
 
       &:disabled {
@@ -107,7 +120,9 @@
     }
 
     .quantity {
-      font-size: 1.4rem;
+      box-sizing: content-box;
+      font-size: 1.6rem;
+      cursor: auto;
       margin: 0 1.5rem;
       font-weight: bold;
       background-color: base.$color-light-blueberry;
@@ -120,9 +135,13 @@
   }
 
   .item-action-btn {
-    background-color: base.$color-secondary;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 50px;
+    width: 50px;
     color: base.$color-white;
-    padding: 0.75rem 1.25rem;
+    padding: 0.5rem;
     font-size: 1.2rem;
     border: none;
     border-radius: 8px;
@@ -130,22 +149,27 @@
     transition: background-color 0.3s ease;
     flex-shrink: 0;
 
-    &:hover {
-      background-color: base.$color-highlight;
-    }
-
     svg {
       fill: base.$color-white;
     }
+  }
+  .item-action-btn-add {
+    background-color: base.$color-secondary;
 
-    &.remove-btn {
-      background-color: base.$color-light-red;
-
-      &:hover {
-        background-color: base.$color-light-blueberry;
-      }
+    &:hover {
+      background-color: base.$color-accent;
     }
   }
+
+  .item-action-btn-remove {
+
+    background-color: base.$color-light-red;
+
+    &:hover {
+      background-color: base.$color-darker-gray;
+    }
+  }
+
 }
 
 // Header for both catalog and cart
@@ -200,30 +224,67 @@
 // Modal styling for item removal or cart clearing
 .modal {
   position: fixed;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  background: rgba(0, 0, 0, 0.5);
+  width: 100vw;
+  height: 100vh;
+  background-color: rgba(0, 0, 0, 0.5);
   display: flex;
   justify-content: center;
-  align-items: center;
+  align-items: flex-start;
+  z-index: 1000;
 
   .modal-content {
-    background: base.$color-white;
+    top: -100px;
+    background-color: base.$color-white;
     padding: 2rem;
-    border-radius: 8px;
+    border-radius: 12px;
     text-align: center;
+    max-width: 500px;
+    width: 100%;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
 
-    h3 {
-      font-size: 1.5rem;
-      margin-bottom: 1.5rem;
-      color: base.$color-dark;
+    .modal-header button {
+      background-color: base.$color-white;
+
+      &:hover {
+        background-color: base.$color-darker-gray;
+      }
+    }
+
+    h3, h4, .modal-title {
+      font-size: 1.75rem;
+      color: base.$color-accent;
+      font-weight: 700;
+      margin-bottom: 1rem;
+    }
+
+    .modal-body {
+      font-size: 1.2rem;
+      color: base.$color-black;
+    }
+
+    .modal-footer {
+      display: flex;
+      justify-content: space-between;
+      padding-top: 1.5rem;
     }
 
     button {
-      margin: 0.5rem;
-      @include base.button-style(base.$color-primary, base.$color-white);
+      @include base.button-style(base.$color-secondary, base.$color-white);
+      padding: 0.75rem 1.5rem;
+      font-size: 1rem;
+      border-radius: 8px;
+
+      &:hover {
+        background-color: base.$color-accent;
+      }
+
+      &.btn-danger {
+        background-color: base.$color-light-red;
+
+        &:hover {
+          background-color: base.$color-light-red;
+        }
+      }
     }
   }
 }

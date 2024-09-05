@@ -11,7 +11,7 @@ $color-white: #ffffff;
 $color-black: #000000;
 $color-gray: #f8f9fa;
 $color-darker-gray: #c2c2c2;
-$color-light-red: #ffe6e6;
+$color-light-red: #ff6e6e;
 $color-light-green: #abffb3;
 $color-light-blueberry: #506fd4;
 
@@ -82,8 +82,3 @@ button {
 @mixin gradient-background($color-top, $color-bottom) {
   background: linear-gradient(to bottom, $color-top, $color-bottom);
 }
-
-// Example usage:
-// .primary-button {
-//   @include button-style($color-primary, $color-white);
-// }

@@ -5,7 +5,7 @@ import SharedItemCard from "../../../components/cards/SharedItemCard";
 const CatalogView = (props: ICatalogViewProps) => {
     return (
         <div className="catalog-container">
-            <h2 className="mb-4">Item Catalog</h2>
+            <h2 className="mb-4">Catalog</h2>
             {props.items.map((item) => (
                 <SharedItemCard
                     key={item.id}

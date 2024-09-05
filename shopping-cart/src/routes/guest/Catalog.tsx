@@ -1,5 +1,5 @@
 import CatalogView from "./route-views/CatalogView";
-import React, {useEffect, useMemo, useState} from "react";
+import React, {useCallback, useEffect, useMemo, useState} from "react";
 import Loader from "../../components/layout/Loader";
 import Patterns from "../../types/strings/patterns/Patterns";
 import IShopItemListElement from "../../types/dto/domain/shop-items/IShopItemListElement";
@@ -15,22 +15,25 @@ const Catalog = () => {
     const [items, setItems] = useState<IShopItemListElement[]>([]);
     const [loading, setLoading] = useState(true);
     const service = useMemo(() => new ShopItemService(), []);
-    const { jwtResponse } = React.useContext(JwtContext);
-    const isAuthorized = !!jwtResponse;  // Check if the user is logged in
+    const {jwtResponse} = React.useContext(JwtContext);
+    const isAuthorized = !!jwtResponse;
 
-    useEffect(() => {
+    const fetchItems = useCallback(async () => {
         service.getAll(HostURLs.GET_ALL_ITEMS).then((response) => {
             if (response) {
                 setItems(response);
-            }
-            else setItems([]);
+            } else setItems([]);
             console.log(items);
             setLoading(false);
-        });
-    }, []);
+        })
+    }, [])
+
+    useEffect(() => {
+        fetchItems().catch();
+    }, [service, fetchItems]);
 
     const handleItemAddRemove = async (item: IShopItemListElement) => {
-        const itemIsInCart = (item?.quantityTaken ?? 0) > 0;
+        const itemIsInCart = (item.quantityTaken ?? 0) > 0;
 
         const action = itemIsInCart
             ? ECartItemActions.SET_AMOUNT
@@ -45,6 +48,7 @@ const Catalog = () => {
         itemIsInCart
             ? notificationManager.showErrorNotification(NotificationMessages.REMOVED_FROM_CART)
             : notificationManager.showSuccessNotification(NotificationMessages.ADDED_TO_CART);
+        fetchItems().catch();
     };
 
     const decodeImageSrc = (item: IShopItemListElement): string => {
@@ -55,7 +59,7 @@ const Catalog = () => {
     };
 
     if (loading) {
-        return <Loader />;
+        return <Loader/>;
     }
 
     return (

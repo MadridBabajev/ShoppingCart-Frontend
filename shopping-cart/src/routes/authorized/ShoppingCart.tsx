@@ -9,17 +9,14 @@ import { NotificationMessages } from "../../types/strings/notifications/Notifica
 import "../../styles/pages/item-list.scss"
 
 const ShoppingCart = () => {
-    const [items, setItems] = useState<IShopItemListElement[]>([]); // Ensure items is initialized as an array
+    const [items, setItems] = useState<IShopItemListElement[]>([]);
     const [loading, setLoading] = useState(true);
     const service = useMemo(() => new ShopItemService(), []);
 
     useEffect(() => {
         service.getCartItems().then((response) => {
-            if (Array.isArray(response)) {
-                setItems(response);
-            } else {
-                setItems([]); // Fallback to empty array if the response is not an array
-            }
+            if (Array.isArray(response)) setItems(response);
+            else setItems([]); // Fallback to empty array if the response is not an array
             setLoading(false);
         }).catch(error => {
             console.error("Error fetching cart items:", error);
@@ -27,18 +24,18 @@ const ShoppingCart = () => {
         });
     }, [service]);
 
-    const handleItemUpdate = async (item: IShopItemListElement, action: ECartItemActions) => {
+    const handleItemUpdate = async (item: IShopItemListElement, action?: ECartItemActions) => {
         await service.addRemoveCartItem({
-            itemId: item.id!,
-            itemAction: action,
+            itemId: item.id,
+            itemAction: action!,
             quantity: null,
         });
 
-        const message = action === ECartItemActions.INCREMENT
+        const notificationMessage = action === ECartItemActions.INCREMENT
             ? NotificationMessages.ADDED_TO_CART
             : NotificationMessages.REMOVED_FROM_CART;
 
-        notificationManager.showSuccessNotification(message);
+        notificationManager.showSuccessNotification(notificationMessage);
 
         // Re-fetch the cart items after update
         const updatedItems = await service.getCartItems();

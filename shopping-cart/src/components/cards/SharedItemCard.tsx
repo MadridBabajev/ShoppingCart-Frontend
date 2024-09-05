@@ -6,17 +6,16 @@ import ECartItemActions from "../../types/dto/domain/shop-items/ECartItemActions
 interface SharedItemCardProps {
     item: IShopItemListElement;
     isCartView: boolean;
-    handleItemUpdate?: (item: IShopItemListElement, action: ECartItemActions) => void;
+    handleItemUpdate?: (item: IShopItemListElement, action?: ECartItemActions) => void;
     isAuthorized?: boolean;
 }
 
 const SharedItemCard = ({
                             item,
                             isCartView,
-                            handleItemUpdate,
-                            isAuthorized
+                            handleItemUpdate
                         }: SharedItemCardProps) => {
-    const isInCart = (item.quantityTaken ?? 0) >= 0;
+    const isInCart = item.quantityTaken && item.quantityTaken > 0;
     const isMaxQuantity = item.quantityTaken === item.stockAmount;
 
     const handlePlusClick = () => {
@@ -24,8 +23,8 @@ const SharedItemCard = ({
     };
 
     const handleMinusClick = () => {
-        if (isInCart && handleItemUpdate) {
-            handleItemUpdate(item, ECartItemActions.SET_AMOUNT);
+        if (!isCartView && handleItemUpdate) {
+            handleItemUpdate(item);
         } else if (handleItemUpdate) {
             handleItemUpdate(item, ECartItemActions.DECREMENT);
         }
@@ -62,9 +61,13 @@ const SharedItemCard = ({
                     </button>
                 </div>
             ) : (
-                isAuthorized && (
-                    <button className="item-action-btn" onClick={handlePlusClick}>
+                !isInCart ? (
+                    <button className="item-action-btn item-action-btn-add" onClick={handlePlusClick}>
                         <FaPlus />
+                    </button>
+                ) : (
+                    <button className="item-action-btn item-action-btn-remove" onClick={handleMinusClick}>
+                        <FaMinus />
                     </button>
                 )
             )}

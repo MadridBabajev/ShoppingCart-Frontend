@@ -1,0 +1,104 @@
+@use '../base';
+
+// Item Details Styles
+.item-details-container {
+  display: flex;
+  justify-content: space-between;
+  padding: 2rem;
+  background-color: base.$color-gray;
+
+  .item-image {
+    flex: 1;
+    max-width: 300px;
+    img {
+      width: 100%;
+      height: auto;
+      border-radius: 8px;
+    }
+  }
+
+  .item-info {
+    flex: 2;
+    margin-left: 2rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+
+    h2 {
+      font-size: 2rem;
+      color: base.$color-accent;
+      font-weight: 700;
+      margin-bottom: 1rem;
+    }
+
+    .item-price, .item-rating, .item-stock {
+      font-size: 1.2rem;
+      margin-bottom: 0.5rem;
+    }
+
+    .guest-message {
+      font-size: 1.1rem;
+      color: base.$color-primary;
+      margin-top: 1rem;
+    }
+
+    .item-quantity {
+      display: flex;
+      align-items: center;
+      margin-top: 1rem;
+
+      input {
+        width: 60px;
+        text-align: center;
+        font-size: 1.2rem;
+        margin: 0 1rem;
+        padding: 0.5rem;
+        border: 1px solid base.$color-gray;
+        border-radius: 4px;
+      }
+
+      .quantity-btn {
+        @include base.btn-icon-align;
+        background-color: base.$color-secondary;
+        color: base.$color-white;
+        border: none;
+        padding: 0.5rem 1rem;
+        font-size: 1.2rem;
+        cursor: pointer;
+        border-radius: 4px;
+
+        &:disabled {
+          background-color: base.$color-darker-gray;
+          cursor: not-allowed;
+        }
+
+        &:hover:not(:disabled) {
+          background-color: #0e1ad1;
+        }
+      }
+    }
+
+    .item-actions {
+      margin-top: 1.5rem;
+
+      .add-to-cart-btn, .remove-from-cart-btn {
+        background-color: base.$color-primary;
+        color: base.$color-white;
+        border: none;
+        padding: 0.75rem 1.5rem;
+        font-size: 1.2rem;
+        cursor: pointer;
+        margin-right: 1rem;
+        border-radius: 8px;
+      }
+
+      .remove-from-cart-btn {
+        background-color: base.$color-light-red;
+      }
+
+      .add-to-cart-btn:hover, .remove-from-cart-btn:hover {
+        opacity: 0.8;
+      }
+    }
+  }
+}

@@ -1,7 +1,13 @@
 import {BaseService} from "./BaseService";
 import IBaseEntity from "../../types/dto/domain/base/IBaseEntity";
 
-export abstract class BaseEntityService<TEntity extends IBaseEntity> extends BaseService {
+interface IBaseEntityService<TEntity extends IBaseEntity> {
+    getAll(path: string): Promise<TEntity[] | undefined>,
+    findOneById(path: string): Promise<TEntity | undefined>
+}
+
+export abstract class BaseEntityService<TEntity extends IBaseEntity> extends BaseService
+    implements IBaseEntityService<TEntity> {
     protected constructor(baseUrl: string) {
         super(baseUrl);
     }

@@ -1,6 +1,6 @@
 import IRegisterData from "../types/dto/identity/IRegisterData";
-import Patterns from "../types/strings/patterns/Patterns";
-import FormValidationErrors from "../types/strings/errors/FormValidationErrors";
+import Patterns from "../types/strings/Patterns";
+import FormValidationErrors from "../types/strings/FormValidationErrors";
 import ILoginData from "../types/dto/identity/ILoginData";
 
 export const ValidateAuthenticationInputs = (values: ILoginData | IRegisterData): string[] => {

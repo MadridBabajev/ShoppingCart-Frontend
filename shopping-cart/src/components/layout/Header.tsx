@@ -1,24 +1,25 @@
 import {useCallback, useContext, useEffect, useState} from "react";
 import JwtContext from "../../types/context/jwt-context/JwtContext";
 import {Link, useNavigate} from "react-router-dom";
-import LocalStorage from "../../types/strings/local-storage/LocalStorage";
+import LocalStorage from "../../types/strings/LocalStorage";
 import {Navigations} from "../../types/navigations/Navigations";
 import logo from "../../assets/logo.png";
 import {IdentityService} from "../../services/app-services/Identity/IdentityService";
 import IHeaderLinksViewProps from "../../types/props/layout/IHeaderProps";
 import '../../styles/layout/header.scss';
+import {notificationManager} from "../../helpers/NotificationManager";
+import {NotificationMessages} from "../../types/strings/notifications/NotificationMessages";
 
 const Header = () => {
     const [isLoggedIn, setIsLoggedIn] = useState<boolean>(false);
     const { jwtResponse } = useContext(JwtContext);
-    const navigate = useNavigate();
 
     const handleStorageChange = useCallback(() => {
         let jwtToken = localStorage.getItem(LocalStorage.JWT);
         if (jwtToken) setIsLoggedIn(true);
         else setIsLoggedIn(false);
 
-    }, [navigate]);
+    }, []);
 
     useEffect(() => {
         // Initial check
@@ -47,9 +48,13 @@ const HeaderLinks = ({ isLoggedIn }: { isLoggedIn: boolean }) => {
         if (jwtResponse) {
             const success = await identityService.logout({ refreshToken: jwtResponse.refreshToken });
             if (success) {
+                // Clear local storage first
+                localStorage.clear();
+
+                // Now update the state
                 if (setJwtResponse) setJwtResponse(null);
-                localStorage.clear()
             }
+            notificationManager.showErrorNotification(NotificationMessages.USER_LOG_OUT);
             navigate("/");
         }
     }

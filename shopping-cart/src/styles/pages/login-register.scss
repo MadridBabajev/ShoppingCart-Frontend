@@ -9,11 +9,13 @@
   @include base.gradient-background(base.$color-white, base.$color-light-blueberry);
 }
 
+
+// Register form styles
 .form-container {
   display: flex;
   flex-direction: column;
   flex-basis: 700px;
-  height: 70vh;
+  height: fit-content;
   padding: 3rem 2rem;
   background-color: base.$color-white;
   border-radius: 8px;

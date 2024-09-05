@@ -1,6 +1,6 @@
 enum HostURLs {
     // == Controllers ==
-    HOST_BASE_URL = "https://mb-distributed-22-23-backend.azurewebsites.net/api/",
+    API_BASE_URL = "https://localhost:7084/api/",
     ACCOUNT_CONTROLLER = "v1/identity/account/",
     SHOP_ITEM_CONTROLLER = "v1/shopItem/",
 
@@ -13,7 +13,6 @@ enum HostURLs {
 
     // ShopItems
     GET_ALL_CART_ITEMS = "GetAllCartItems",
-    GET_CART_ITEM_DETAILS = "GetShoppingCartItemDetails",
     ADD_REMOVE_ITEM = "AddRemoveCartItem",
     CLEAR_CART = "ClearShoppingCart",
     GET_ALL_ITEMS = "GetAllShopItems",

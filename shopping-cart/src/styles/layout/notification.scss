@@ -1,0 +1,35 @@
+@use '../base';
+
+.notification-popup {
+  position: fixed;
+  bottom: 20px;
+  left: 50%;
+  transform: translateX(-50%);
+  padding: 1rem 2rem;
+  border-radius: 8px;
+  font-size: 1rem;
+  font-weight: bold;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+  color: base.$color-white;
+  transition: opacity 0.3s ease, bottom 0.3s ease;
+  opacity: 1;
+  z-index: 1000;
+
+  // Success notification style
+  &.SUCCESS {
+    background-color: base.$color-accent;
+    color: base.$color-white; // White font for contrast
+  }
+
+  // Error notification style
+  &.ERROR {
+    background-color: base.$color-light-red;
+    color: base.$color-black; // Black font for readability
+  }
+
+  // Hide notification with animation
+  &.hide {
+    opacity: 0;
+    bottom: 10px;
+  }
+}

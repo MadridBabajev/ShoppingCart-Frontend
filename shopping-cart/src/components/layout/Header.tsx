@@ -13,14 +13,13 @@ import {NotificationMessages} from "../../types/strings/notifications/Notificati
 const Header = () => {
     const [isLoggedIn, setIsLoggedIn] = useState<boolean>(false);
     const { jwtResponse } = useContext(JwtContext);
-    const navigate = useNavigate();
 
     const handleStorageChange = useCallback(() => {
         let jwtToken = localStorage.getItem(LocalStorage.JWT);
         if (jwtToken) setIsLoggedIn(true);
         else setIsLoggedIn(false);
 
-    }, [navigate]);
+    }, []);
 
     useEffect(() => {
         // Initial check

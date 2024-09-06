@@ -19,8 +19,6 @@ export abstract class BaseService {
 
         // Add a request interceptor
         this.axios.interceptors.request.use(async (config) => {
-            console.log('Starting Request', JSON.stringify(config, null, 2));
-
             const token = localStorage.getItem(LocalStorage.JWT);
             const refreshToken = localStorage.getItem(LocalStorage.REFRESH_TOKEN);
             const expiryTime = localStorage.getItem(LocalStorage.EXPIRY);

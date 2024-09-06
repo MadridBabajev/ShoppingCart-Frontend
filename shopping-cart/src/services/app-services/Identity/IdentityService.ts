@@ -49,13 +49,13 @@ export class IdentityService extends BaseService {
             if (token) {
                 this.axios.defaults.headers['Authorization'] = `Bearer ${token}`;
             }
-
             const response = await this.axios.post(ApiUrls.LOGOUT, data);
-            console.log('Logout successful');
+
             return response.status === 200;
         } catch (e) {
             const axiosError = e as AxiosError<IError>;
             console.error('Logout error:', axiosError.message);
+
             return false;
         }
     }

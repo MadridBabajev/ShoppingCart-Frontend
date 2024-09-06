@@ -20,10 +20,8 @@ const Catalog = () => {
 
     const fetchItems = useCallback(async () => {
         service.getAll(ApiUrls.GET_ALL_ITEMS).then((response) => {
-            if (response) {
-                setItems(response);
-            } else setItems([]);
-            console.log(items);
+            if (response) setItems(response);
+            else setItems([]);
             setLoading(false);
         })
     }, [service])

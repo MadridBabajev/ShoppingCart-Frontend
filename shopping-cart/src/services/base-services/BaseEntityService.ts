@@ -27,7 +27,6 @@ export abstract class BaseEntityService<TEntity extends IBaseEntity> extends Bas
     async findOneById(path: string): Promise<TEntity | undefined> {
         try {
             const response = await this.axios.get<TEntity>(path);
-            console.log("Response: ", response);
             if (response.status === 200) {
                 return response.data as TEntity;
             }

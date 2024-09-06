@@ -5,6 +5,7 @@
   display: flex;
   justify-content: space-between;
   padding: 2rem;
+  min-height: 70vh;
   background-color: base.$color-gray;
 
   .item-image {

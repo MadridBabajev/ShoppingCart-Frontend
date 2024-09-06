@@ -4,7 +4,7 @@ import Loader from "../../components/layout/Loader";
 import Patterns from "../../types/strings/Patterns";
 import IShopItemListElement from "../../types/dto/domain/shop-items/IShopItemListElement";
 import {ShopItemService} from "../../services/app-services/entity/ShopItemService";
-import HostURLs from "../../types/strings/HostURLs";
+import ApiUrls from "../../types/strings/ApiUrls";
 import ECartItemActions from "../../types/dto/domain/shop-items/ECartItemActions";
 import {notificationManager} from "../../helpers/NotificationManager";
 import {NotificationMessages} from "../../types/strings/notifications/NotificationMessages";
@@ -19,11 +19,9 @@ const Catalog = () => {
     const isAuthorized = !!jwtResponse;
 
     const fetchItems = useCallback(async () => {
-        service.getAll(HostURLs.GET_ALL_ITEMS).then((response) => {
-            if (response) {
-                setItems(response);
-            } else setItems([]);
-            console.log(items);
+        service.getAll(ApiUrls.GET_ALL_ITEMS).then((response) => {
+            if (response) setItems(response);
+            else setItems([]);
             setLoading(false);
         })
     }, [service])

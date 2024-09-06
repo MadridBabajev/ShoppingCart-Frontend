@@ -1,6 +1,6 @@
-enum HostURLs {
+enum ApiUrls {
     // == Controllers ==
-    API_BASE_URL = "https://localhost:7084/api/",
+    API_BASE_URL = "http://localhost:8000/api/",
     ACCOUNT_CONTROLLER = "v1/identity/account/",
     SHOP_ITEM_CONTROLLER = "v1/shopItem/",
 
@@ -19,4 +19,4 @@ enum HostURLs {
     GET_ITEM_DETAILS = "GetShopItemDetails",
 }
 
-export default HostURLs;
+export default ApiUrls;

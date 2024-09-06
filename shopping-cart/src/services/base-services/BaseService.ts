@@ -1,11 +1,11 @@
 import Axios, { AxiosInstance } from 'axios';
 import EventEmitter from 'events';
 import LocalStorage from '../../types/strings/LocalStorage';
-import HostURLs from '../../types/strings/HostURLs';
+import ApiUrls from '../../types/strings/ApiUrls';
 import RefreshEvents from "../../types/strings/RefreshEvents";
 
 export abstract class BaseService {
-    private static hostBaseURL = HostURLs.API_BASE_URL;  // Base URL for API
+    private static hostBaseURL = ApiUrls.API_BASE_URL;  // Base URL for API
 
     protected axios: AxiosInstance;  // Axios instance for general API calls
     private axiosForRefresh: AxiosInstance;  // Separate Axios instance for refresh token requests
@@ -33,7 +33,7 @@ export abstract class BaseService {
             if (token && refreshToken && expiryTime && new Date().getTime() > Number(expiryTime)) {
                 // Token is expired, refresh it
                 const response = await this.axiosForRefresh.post(
-                    BaseService.hostBaseURL + `${HostURLs.ACCOUNT_CONTROLLER}${HostURLs.REFRESH_JWT_TOKEN}`,
+                    BaseService.hostBaseURL + `${ApiUrls.ACCOUNT_CONTROLLER}${ApiUrls.REFRESH_JWT_TOKEN}`,
                     { jwt: token, refreshToken: refreshToken });
 
                 // Update local storage with new token and expiry time values

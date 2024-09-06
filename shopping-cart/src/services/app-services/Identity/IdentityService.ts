@@ -1,5 +1,5 @@
 import { BaseService } from '../../base-services/BaseService';
-import HostURLs from '../../../types/strings/HostURLs';
+import ApiUrls from '../../../types/strings/ApiUrls';
 import { AxiosError } from 'axios';
 import IError from '../../../types/errors/IError';
 import IJWTResponse from '../../../types/dto/identity/IJWTResponse';
@@ -11,13 +11,13 @@ import LocalStorage from "../../../types/strings/LocalStorage";
 
 export class IdentityService extends BaseService {
     constructor() {
-        super(HostURLs.ACCOUNT_CONTROLLER);
+        super(ApiUrls.ACCOUNT_CONTROLLER);
     }
 
     // Register a new user
     async register(data: IRegisterData): Promise<IdentityServiceResponse> {
         try {
-            const response = await this.axios.post(HostURLs.REGISTER, data);
+            const response = await this.axios.post(ApiUrls.REGISTER, data);
             return response.status === 200
                 ? [response.data, null]
                 : [null, { Error: response.data.error }];
@@ -31,7 +31,7 @@ export class IdentityService extends BaseService {
     // Log in a user and return JWT and refresh tokens
     async login(data: ILoginData): Promise<IdentityServiceResponse> {
         try {
-            const response = await this.axios.post<IJWTResponse>(HostURLs.LOGIN, data);
+            const response = await this.axios.post<IJWTResponse>(ApiUrls.LOGIN, data);
             return response.status === 200
                 ? [response.data, null]
                 : [null, { Error: 'Login failed, status code not 200' }];
@@ -50,7 +50,7 @@ export class IdentityService extends BaseService {
                 this.axios.defaults.headers['Authorization'] = `Bearer ${token}`;
             }
 
-            const response = await this.axios.post(HostURLs.LOGOUT, data);
+            const response = await this.axios.post(ApiUrls.LOGOUT, data);
             console.log('Logout successful');
             return response.status === 200;
         } catch (e) {

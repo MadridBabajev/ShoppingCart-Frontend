@@ -1,5 +1,5 @@
 import {BaseEntityService} from "../../base-services/BaseEntityService";
-import HostURLs from "../../../types/strings/HostURLs";
+import ApiUrls from "../../../types/strings/ApiUrls";
 import IShopItemDetails from "../../../types/dto/domain/shop-items/IShopItemDetails";
 import IShopItemListElement from "../../../types/dto/domain/shop-items/IShopItemListElement";
 import IShoppingCartItemAction from "../../../types/dto/domain/shop-items/IShoppingCartItemAction";
@@ -14,12 +14,12 @@ interface IShopItemService {
 
 export class ShopItemService extends BaseEntityService<IShopItemDetails> implements IShopItemService {
     constructor() {
-        super(HostURLs.SHOP_ITEM_CONTROLLER);
+        super(ApiUrls.SHOP_ITEM_CONTROLLER);
     }
 
     async getCartItems(): Promise<IShopItemListElement[] | undefined> {
         try {
-            const response = await this.axios.get(HostURLs.GET_ALL_CART_ITEMS);
+            const response = await this.axios.get(ApiUrls.GET_ALL_CART_ITEMS);
             return response.data;
         } catch (error) {
             console.error(`Failed to retrieve cart items: ${error}`);
@@ -28,7 +28,7 @@ export class ShopItemService extends BaseEntityService<IShopItemDetails> impleme
 
     async getShopItemDetails(itemId: string): Promise<IShopItemDetails | undefined> {
         try {
-            const apiRequest = `${HostURLs.GET_ITEM_DETAILS}${QueryParams.SHOP_ITEM}${itemId}`
+            const apiRequest = `${ApiUrls.GET_ITEM_DETAILS}${QueryParams.SHOP_ITEM}${itemId}`
             const response = await this.axios.get(apiRequest)
             return response.data;
         } catch (error) {
@@ -38,7 +38,7 @@ export class ShopItemService extends BaseEntityService<IShopItemDetails> impleme
 
     async addRemoveCartItem(cartAction: IShoppingCartItemAction): Promise<void> {
         try {
-            return await this.axios.put(HostURLs.ADD_REMOVE_ITEM, cartAction);
+            return await this.axios.put(ApiUrls.ADD_REMOVE_ITEM, cartAction);
         } catch (error) {
             console.error(`Failed to add a tag: ${error}`);
         }
@@ -46,7 +46,7 @@ export class ShopItemService extends BaseEntityService<IShopItemDetails> impleme
 
     async clearShoppingCart(): Promise<void> {
         try {
-            return await this.axios.delete(HostURLs.CLEAR_CART);
+            return await this.axios.delete(ApiUrls.CLEAR_CART);
         } catch (error) {
             console.error(`Failed to remove a tag: ${error}`);
         }

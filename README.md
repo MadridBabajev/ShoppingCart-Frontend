@@ -20,8 +20,9 @@ npm run build
 ~~~
 
 ## 5. Run the application
+
+- Run script
 ~~~bash
 docker-compose up --build
 ~~~
-
-
+- Open the application in your browser: http://localhost:8080/
